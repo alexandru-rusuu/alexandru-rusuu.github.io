@@ -228,12 +228,47 @@ p {
   color: var(--text);
 }
 
+.section-gap {
+  margin-top: 1.6rem;
+}
+
 .contact-card {
   margin-bottom: 2.5rem;
 }
 
 .contact-section {
-  margin-top: 1.4rem;
+  margin-top: 0;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1.4rem;
+  margin-top: 0.8rem;
+}
+
+.skill-group-label {
+  margin: 0 0 0.5rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.skill-tag {
+  background: color-mix(in oklab, var(--surface-soft) 86%, transparent);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.28rem 0.65rem;
+  font-size: 0.83rem;
+  color: var(--text);
 }
 
 .contact-grid {
