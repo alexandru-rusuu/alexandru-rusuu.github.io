@@ -1,66 +1,67 @@
-const yearElement = document.getElementById("year");
-if (yearElement) {
-  yearElement.textContent = new Date().getFullYear();
+// ── Year in footer ───────────────────────────
+const yearEl = document.getElementById("year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+// ── Live local clock (Suceava / browser local) ──
+const clockEl = document.getElementById("clock");
+if (clockEl) {
+  const tick = () => {
+    const t = new Date().toLocaleTimeString("en-GB", {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+    clockEl.textContent = `Suceava · ${t}`;
+  };
+  tick();
+  setInterval(tick, 1000 * 15);
 }
 
-const revealElements = document.querySelectorAll(".reveal");
-const observer = new IntersectionObserver(
+// ── Scroll reveal ────────────────────────────
+const revealEls = document.querySelectorAll(".reveal");
+const io = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.classList.add("in-view");
+        io.unobserve(entry.target);
       }
     });
   },
-  { threshold: 0.2 }
+  { threshold: 0.15, rootMargin: "0px 0px -8% 0px" }
 );
+revealEls.forEach((el) => io.observe(el));
 
-revealElements.forEach((element) => observer.observe(element));
+// ── Scroll progress bar ──────────────────────
+const progressBar = document.querySelector(".scroll-progress span");
+if (progressBar) {
+  const onScroll = () => {
+    const h = document.documentElement;
+    const scrolled = h.scrollTop / (h.scrollHeight - h.clientHeight || 1);
+    progressBar.style.width = `${Math.min(scrolled * 100, 100)}%`;
+  };
+  document.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+}
 
-const canvas = document.getElementById("bg-canvas");
-const context = canvas.getContext("2d");
-let particles = [];
+// ── Cursor spotlight (pointer-capable devices) ──
+const finePointer = window.matchMedia("(pointer: fine)").matches;
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const resizeCanvas = () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-};
+if (finePointer && !reduceMotion) {
+  const spotlight = document.querySelector(".spotlight");
+  let raf = null;
+  let mx = window.innerWidth / 2;
+  let my = window.innerHeight / 3;
 
-const createParticles = (count) => {
-  particles = Array.from({ length: count }, () => ({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    radius: Math.random() * 1.7 + 0.8,
-    vx: (Math.random() - 0.5) * 0.25,
-    vy: (Math.random() - 0.5) * 0.25,
-    alpha: Math.random() * 0.55 + 0.2,
-  }));
-};
+  const render = () => {
+    spotlight.style.setProperty("--mx", `${mx}px`);
+    spotlight.style.setProperty("--my", `${my}px`);
+    raf = null;
+  };
 
-const draw = () => {
-  context.clearRect(0, 0, canvas.width, canvas.height);
-
-  for (const particle of particles) {
-    particle.x += particle.vx;
-    particle.y += particle.vy;
-
-    if (particle.x < 0 || particle.x > canvas.width) particle.vx *= -1;
-    if (particle.y < 0 || particle.y > canvas.height) particle.vy *= -1;
-
-    context.beginPath();
-    context.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-    context.fillStyle = `rgba(140, 180, 255, ${particle.alpha})`;
-    context.fill();
-  }
-
-  requestAnimationFrame(draw);
-};
-
-resizeCanvas();
-createParticles(Math.min(120, Math.floor(window.innerWidth / 11)));
-requestAnimationFrame(draw);
-
-window.addEventListener("resize", () => {
-  resizeCanvas();
-  createParticles(Math.min(120, Math.floor(window.innerWidth / 11)));
-});
+  window.addEventListener("pointermove", (e) => {
+    mx = e.clientX;
+    my = e.clientY;
+    if (!raf) raf = requestAnimationFrame(render);
+  });
+}

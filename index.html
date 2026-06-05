@@ -5,138 +5,164 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Alexandru Rusu — 3rd-year CS student passionate about cybersecurity and networking."
+      content="Alexandru Rusu — third-year Computer Science student in Suceava, focused on cybersecurity and networking."
     />
-    <title>Alexandru Rusu</title>
+    <meta name="theme-color" content="#0e0d0c" />
+    <title>Alexandru Rusu — Security & Networks</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <canvas id="bg-canvas" aria-hidden="true"></canvas>
 
-    <header class="site-header">
-      <div class="container nav-wrap">
-        <a class="logo" href="#home">
-          <div class="logo-mark">
-            <svg viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <text x="3" y="22" font-family="Inter,sans-serif" font-weight="800" font-size="16" fill="#5ac8ff">AR</text>
-            </svg>
-          </div>
-          <span class="logo-text">Alexandru Rusu</span>
-        </a>
-        <nav>
-          <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
+  <body>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="spotlight" aria-hidden="true"></div>
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
+    <header class="topbar">
+      <a class="brand" href="#top">
+        <span class="brand-mark">AR</span>
+        <span class="brand-name">Alexandru&nbsp;Rusu</span>
+      </a>
+      <div class="topbar-meta">
+        <span class="status"><span class="status-dot"></span>Open to opportunities</span>
+        <span class="clock" id="clock">Suceava</span>
       </div>
     </header>
 
-    <main id="home">
-      <section class="hero container reveal">
-        <p class="tag">CS Student · Year 3 · Cybersecurity & Networking</p>
-        <h1>
-          Alexandru Rusu
-          <span class="gradient-text">Security & Networks.</span>
-        </h1>
-        <p class="hero-description">
-          Third-year Computer Science student at USM Suceava, building practical knowledge
-          in cybersecurity, network fundamentals, and Python — one lab at a time.
+    <main id="top">
+      <!-- ░░ HERO ░░ -->
+      <section class="hero">
+        <p class="eyeline reveal">
+          <span class="idx">01</span> Computer Science · Year&nbsp;3 · USM Suceava
         </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="https://github.com/alexandru-rusuu" target="_blank" rel="noreferrer">GitHub</a>
-          <a class="btn btn-secondary" href="https://www.linkedin.com/in/alexandrusu-btp/" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a class="btn btn-ghost" href="/cv.pdf" download>Download CV</a>
-          <a class="btn btn-ghost" href="mailto:alexrusu795@gmail.com">Email Me</a>
+
+        <h1 class="display">
+          <span class="line"><span>Alexandru</span></span>
+          <span class="line"><span>Rusu</span></span>
+        </h1>
+
+        <p class="lede reveal" data-delay="2">
+          I study how systems work — <em>and how they fail.</em>
+        </p>
+
+        <p class="hero-sub reveal" data-delay="3">
+          A third-year Computer Science student building real, hands-on knowledge in
+          cybersecurity and computer networks. Equal parts curiosity and discipline.
+        </p>
+
+        <nav class="hero-actions reveal" data-delay="4" aria-label="Primary">
+          <a class="btn btn-solid" href="/cv.pdf" download>
+            Download CV <span class="btn-arrow">↓</span>
+          </a>
+          <a class="btn btn-line" href="https://github.com/alexandru-rusuu" target="_blank" rel="noreferrer">GitHub</a>
+          <a class="btn btn-line" href="https://www.linkedin.com/in/alexandrusu-btp/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a class="btn btn-line" href="mailto:alexrusu795@gmail.com">Email</a>
+        </nav>
+
+        <a class="scroll-cue reveal" data-delay="5" href="#about" aria-label="Scroll to about">
+          <span>Scroll</span>
+          <span class="scroll-cue-line"></span>
+        </a>
+      </section>
+
+      <!-- ░░ ABOUT ░░ -->
+      <section class="block" id="about">
+        <p class="block-label reveal"><span class="idx">02</span> About</p>
+        <div class="block-body">
+          <h2 class="block-title reveal">
+            Understanding the machine — from the packet up to the policy.
+          </h2>
+          <div class="about-cols">
+            <div class="about-prose reveal" data-delay="2">
+              <p>
+                I'm a third-year Computer Science student at Universitatea Ștefan cel
+                Mare Suceava (FIESC). My focus is cybersecurity and networking: the
+                layers most people take for granted, and the failure modes that hide
+                between them.
+              </p>
+              <p>
+                I learn by building and breaking — labs, capture-the-flag exercises,
+                and small tools that turn theory into something I can actually run.
+              </p>
+            </div>
+            <ul class="about-meta reveal" data-delay="3">
+              <li><span>Based in</span><strong>Suceava, Romania</strong></li>
+              <li><span>Studying</span><strong>Computer Science · Year 3</strong></li>
+              <li><span>Focus</span><strong>Cybersecurity & Networking</strong></li>
+              <li><span>Email</span><strong><a href="mailto:alexrusu795@gmail.com">alexrusu795@gmail.com</a></strong></li>
+            </ul>
+          </div>
         </div>
       </section>
 
-      <section id="about" class="container reveal section-gap">
-        <article class="card">
-          <h2>About</h2>
-          <p>
-            I'm a 3rd-year Computer Science student at Universitatea Ștefan cel Mare Suceava,
-            Faculty of Electrical Engineering and Computer Science. My main interests are
-            cybersecurity and networking — understanding how systems work, and how they fail.
-          </p>
-          <ul class="meta-list">
-            <li><strong>Location:</strong> Suceava, Romania</li>
-            <li><strong>University:</strong> USM Suceava — FIESC, Year 3</li>
-            <li><strong>Focus:</strong> Cybersecurity & Networking</li>
-            <li><strong>Email:</strong> <a href="mailto:alexrusu795@gmail.com">alexrusu795@gmail.com</a></li>
-          </ul>
-        </article>
+      <!-- ░░ SKILLS ░░ -->
+      <section class="block" id="skills">
+        <p class="block-label reveal"><span class="idx">03</span> Toolkit</p>
+        <div class="block-body">
+          <h2 class="block-title reveal">What I work with.</h2>
+          <ol class="skill-list">
+            <li class="skill-row reveal">
+              <span class="skill-no">/01</span>
+              <span class="skill-name">Python</span>
+              <span class="skill-note">Scripting, automation, small security tooling</span>
+            </li>
+            <li class="skill-row reveal" data-delay="2">
+              <span class="skill-no">/02</span>
+              <span class="skill-name">Linux &amp; the shell</span>
+              <span class="skill-note">Everyday environment — Bash, the command line</span>
+            </li>
+            <li class="skill-row reveal" data-delay="2">
+              <span class="skill-no">/03</span>
+              <span class="skill-name">Networking</span>
+              <span class="skill-note">TCP/IP, routing &amp; switching fundamentals</span>
+            </li>
+            <li class="skill-row reveal" data-delay="3">
+              <span class="skill-no">/04</span>
+              <span class="skill-name">Security foundations</span>
+              <span class="skill-note">Defensive concepts, threat models, lab work</span>
+            </li>
+          </ol>
+        </div>
       </section>
 
-      <section id="skills" class="container reveal section-gap">
-        <article class="card">
-          <h2>Skills</h2>
-          <div class="skills-grid">
-            <div class="skill-group">
-              <p class="skill-group-label">Languages</p>
-              <div class="skill-tags">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">Bash</span>
-              </div>
-            </div>
-            <div class="skill-group">
-              <p class="skill-group-label">Systems</p>
-              <div class="skill-tags">
-                <span class="skill-tag">Linux</span>
-                <span class="skill-tag">CLI</span>
-              </div>
-            </div>
-            <div class="skill-group">
-              <p class="skill-group-label">Networking</p>
-              <div class="skill-tags">
-                <span class="skill-tag">TCP/IP</span>
-                <span class="skill-tag">Network Fundamentals</span>
-              </div>
-            </div>
-            <div class="skill-group">
-              <p class="skill-group-label">Security</p>
-              <div class="skill-tags">
-                <span class="skill-tag">Cyber Defense Concepts</span>
-                <span class="skill-tag">Security Basics</span>
-              </div>
-            </div>
-          </div>
-        </article>
-      </section>
-
-      <section id="contact" class="container reveal section-gap contact-section">
-        <article class="card contact-card">
-          <h2>Let's Connect</h2>
-          <p>Open to networking, collaboration, and cybersecurity-related projects.</p>
-          <div class="contact-grid">
-            <a href="mailto:alexrusu795@gmail.com">
+      <!-- ░░ CONTACT ░░ -->
+      <section class="block contact" id="contact">
+        <p class="block-label reveal"><span class="idx">04</span> Contact</p>
+        <div class="block-body">
+          <h2 class="contact-headline reveal">
+            Let's build, break, or<br />learn something together.
+          </h2>
+          <div class="contact-links reveal" data-delay="2">
+            <a class="contact-link" href="mailto:alexrusu795@gmail.com">
               <span>Email</span>
               <strong>alexrusu795@gmail.com</strong>
+              <span class="contact-go">→</span>
             </a>
-            <a href="https://github.com/alexandru-rusuu" target="_blank" rel="noreferrer">
+            <a class="contact-link" href="https://github.com/alexandru-rusuu" target="_blank" rel="noreferrer">
               <span>GitHub</span>
-              <strong>alexandru-rusuu</strong>
+              <strong>@alexandru-rusuu</strong>
+              <span class="contact-go">↗</span>
             </a>
-            <a href="https://www.linkedin.com/in/alexandrusu-btp/" target="_blank" rel="noreferrer">
+            <a class="contact-link" href="https://www.linkedin.com/in/alexandrusu-btp/" target="_blank" rel="noreferrer">
               <span>LinkedIn</span>
               <strong>alexandrusu-btp</strong>
+              <span class="contact-go">↗</span>
             </a>
           </div>
-        </article>
+        </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div class="container">
-        <p>© <span id="year"></span> Alexandru Rusu. All rights reserved.</p>
-      </div>
+      <span>© <span id="year"></span> Alexandru Rusu</span>
+      <span class="footer-mid">Suceava, RO</span>
+      <a href="#top">Back to top ↑</a>
     </footer>
 
     <script src="script.js"></script>
